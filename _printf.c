@@ -37,12 +37,14 @@ int _printf(const char *format, ...)
 
 	for (t = 0; format && format[t] != '\0'; t++)
 	{
-		buffer[buff_ind++] = format[t];
-		if (buff_ind == BSIZE)
+		if (format[t] != '%')
 		{
+			buffer[buff_ind++] = format[t];
+			if (buff_ind == BSIZE)
+			{
 			print_buffer(buffer, &buff_ind);
 			printed_chars++;
-		}
+			}
 		else
 		{
 			print_buffer(buffer, &buff_ind);
@@ -64,11 +66,6 @@ int _printf(const char *format, ...)
 	va_end(nums);
 	return (printed_chars);
 }
-
-
-
-
-
 
 
 
