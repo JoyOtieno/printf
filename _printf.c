@@ -1,16 +1,27 @@
 #include "main.h"
+/**
+*print_buffer - Function that prints contents of the buffer array
+*up to the buffer index specified by buff_ind
+*@buffer: The buffer array
+*@buff_ind: The buffer index
+*
+*Description: Function receives buffer array 'buffer' and buffer index
+*buff_ind. It then loops from index 0 to the last one printing all
+*characters and a new line using _printf
+*/
+void print_buffer(char buffer[], int *buff_ind);
 
 /**
 *_printf - Function that produces output according to format
-*print_buffer - Function that prints contents of the buffer array
-*up to the buffer index specified by buff_ind
-*Description: Function receives buffer array buffer[] and buffer index
-* *buff_ind. It then loops from index 0 to the last one printing all
-* characters and a new line using _printf
-*@format: format of output
-*Return: chars
+*@format: A string pointer to desired output type
+*
+*Description: This function parses format processing it character
+*by character. It then performs formattimg operations using
+*placeholders before printing output
+*
+*Return: The number of characters to be printed
 */
-void print_buffer(char buffer[], int *buff_ind)
+
 int _printf(const char *format, ...)
 {
 	int t, printed = 0, printed_chars = 0;
