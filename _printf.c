@@ -66,6 +66,28 @@ int _printf(const char *format, ...)
 	va_end(nums);
 	return (printed_chars);
 }
+/**
+*print_buffer - Function that prints contents of the buffer array
+*up to the buffer index specified by buff_ind
+*@buffer: The buffer array
+*@buff_ind: The buffer index
+*
+*Description: Function receives buffer array 'buffer' and buffer index
+*buff_ind. It then loops from index 0 to the last one printing all
+*characters and a new line using _printf
+*/
+void print_buffer(char buffer[], int *buff_ind)
+{
+	if (*buff_ind > 0)
+	{
+		write(1, &buffer[0], *buff_ind);
+	}
+	*buff_ind = 0;
+}
+
+
+
+
 
 
 
