@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 			print_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &t);
 			width = get_width(format, &t, nums);
-			precision = get_precision(format, &t, list);
+			precision = get_precision(format, &t, nums);
 			size = get_size(format, &t);
 			++t;
 			printed = handle_print(format, &t, nums, buffer,
@@ -66,14 +66,6 @@ int _printf(const char *format, ...)
 	va_end(nums);
 	return (printed_chars);
 }
-
-
-
-
-
-
-
-
 
 
 
