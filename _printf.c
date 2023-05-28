@@ -1,52 +1,71 @@
-#include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
 
+/**
+*_printf - Function that produces output according to format
+*print_buffer - Function that prints contents of the buffer array
+*up to the buffer index specified by buff_ind
+*Description: Function receives buffer array buffer[] and buffer index
+* *buff_ind. It then loops from index 0 to the last one printing all
+* characters and a new line using _printf
+*@format: format of output
+*Return: chars
+*/
+void print_buffer(char buffer[], int *buff_ind)
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int t, printed = 0, printed_chars = 0;
+	int flags, width, precision, size, buff_ind = 0;
+	va_list nums;
+	char buffer[BSIZE];
 
-	va_list characters;
-	
-	va_start(characters, format);
-
-	while (*format != '\0')
+	if (format == NULL)
 	{
-		if (*format == '%')
-		{
-			format++;
+		return (-1);
+	}
+	va_start(nums, format);
 
-			switch (*format)
-			{
-				case 'c':
-					count += putchar(va_arg(characters, int));
-					break;
-				case 's':
-				{
-					const char *str = va_arg(characters, const char*);
-					
-					while (*str != '\0')
-					{
-						count += putchar(*str);
-						str++;
-					}
-				}
-				break;
-			case '%':
-				count += putchar('%');
-				break;
-			default:
-				count += putchar('%');
-				count += putchar(*format);
-			break;
-			}
+	for (t = 0; format && format[t] != '\0'; t++)
+	{
+		buffer[buff_ind++] = format[t];
+		if (buff_ind == BSIZE)
+		{
+			print_buffer(buffer, &buff_ind);
+			printed_chars++;
 		}
 		else
 		{
-			count += putchar(*format);
+			print_buffer(buffer, &buff_ind);
+			flags = get_flags(format, &t);
+			width = get_width(format, &t, nums);
+			precision = get_precision(format, &t, list);
+			size = get_size(format, &t);
+			++t;
+			printed = handle_print(format, &t, nums, buffer,
+			flags, width, precision, size);
+			if (printed == -1)
+			{
+				return (-1);
+			}
+			printed_chars += printed;
 		}
-	format++;
 	}
-	va_end(characters);
-	return (count);
+	print_buffer(buffer, &buff_ind);
+	va_end(nums);
+	return (printed_chars);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
