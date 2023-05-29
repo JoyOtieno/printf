@@ -45,6 +45,7 @@ int _printf(const char *format, ...)
 			print_buffer(buffer, &buff_ind);
 			printed_chars++;
 			}
+		}
 		else
 		{
 			print_buffer(buffer, &buff_ind);
