@@ -9,8 +9,13 @@
  */
 int main(void)
 {
+<<<<<<< HEAD
+	int len;
+	int len2;
+=======
     int len;
     int len2;
+>>>>>>> f8a9fea0b572182e778c863227609517b672d5a1
     unsigned int ui;
     void *addr;
 

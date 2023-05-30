@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 
 int get_flags(const char *format, int *t);
 int get_width(const char *format, int *t, va_list nums);
