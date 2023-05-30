@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * print_string -prints string with formatting options
