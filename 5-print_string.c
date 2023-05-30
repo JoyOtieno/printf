@@ -13,20 +13,14 @@
 
 int print_string(const char *str, int width, int precision, int flags)
 {
-	int padding;
-	int length = 0;
-
-	int printed_characters = 0;
+	int padding, int length = 0, int printed_characters = 0;
 
 	if (str == NULL)
 		str = "(null)";
-
 	while (str[length] != '\0')
 		length++;
-
 	if (precision >= 0 && precision < length)
 	length = precision;
-
 	if (width > length)
 	{
 		int padding = width - length;
@@ -53,12 +47,10 @@ int print_string(const char *str, int width, int precision, int flags)
 		}
 	printed_characters += length;
 	}
-	
 	else
 	{
 		write(1, str, length);
 		printed_characterss = length;
 	}
-
-	return (printed_chars);
+	return (printed_characters);
 }
