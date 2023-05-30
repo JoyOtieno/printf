@@ -51,7 +51,7 @@ int print_string(const char *str, int width, int precision, int flags)
 	else
 	{
 		write(1, str, length);
-		printed_characterss = length;
+		printed_characters = length;
 	}
 	return (printed_characters);
 }

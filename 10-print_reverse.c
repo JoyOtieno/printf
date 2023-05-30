@@ -18,14 +18,14 @@ int precision, int flags, int width, int size)
 	int t;
 	char *string;
 
-	indext = 0;
+	int index = 0;
 
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(size);
 
-	str = va_arg(nums, char *);
+	string = va_arg(nums, char *);
 
 	if (string == NULL)
 	{
@@ -33,9 +33,10 @@ int precision, int flags, int width, int size)
 		string = ")Null(";
 	}
 	for (t = 0; string[t]; t++)
+		;
 		for (t = t - 1; t >= 0; t--)
 		{
-			char z = str[t];
+			char z = string[t];
 
 			write(1, &z, 1);
 			index++;

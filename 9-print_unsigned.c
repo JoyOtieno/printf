@@ -16,12 +16,12 @@
 int print_unsigned(va_list nums, char buffer[],
 int precision, int flags, int width, int size)
 {
-	int t = BUFF_SIZE - 2;
+	int t = BSIZE - 2;
 	unsigned long int value = va_arg(nums, unsigned long int);
 
-	value = convert_size_unsgnd(num, size);
+	value = convert_size_unsgnd(nums, size);
 
-	if (valuem == 0)
+	if (value == 0)
 		buffer[t--] = '0';
 
 	buffer[BSIZE - 1] = '\0';
@@ -34,5 +34,5 @@ int precision, int flags, int width, int size)
 
 	t++;
 
-	return (write_unsgnd(0, t, buffer, precision, flags, width, size));
+	return write_unsgnd(t, 0, nums, buffer, flags, width, precision, size);
 }
