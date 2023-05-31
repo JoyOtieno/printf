@@ -4,34 +4,39 @@
 
 /**
  * print_string -prints string with formatting options
- * @str: string to print
+ * @string: string to print
  * @width:width.
- * @precision: umber of characters to print
- * @flags: formattingg flags
+ * @precision: precision
+ * @nums: arguements
+ * @buffer: buffer array
+ * @size: size
+ * @flags: flags
  *
  * Return: characters
  */
 
-int print_string(const char *str, int width, int precision, int flags)
+int print_string(va_list nums, char buffer[],
+int precision, int flags, int width, int size)
 {
-	int padding, int length = 0,
-	int printed_characters = 0;
+	char *string, int padding, length = 0, printed_characters = 0;
 
-	if (str == NULL)
-		str = "(null)";
-	while (str[length] != '\0')
+	UNUSED(buffer), UNUSED(flags), UNUSED(size);
+	string = va_arg(nums, char *);
+	if (string == NULL)
+		string = "(null)";
+	while (string[length] != '\0')
 		length++;
 	if (precision >= 0 && precision < length)
-	length = precision;
+		length = precision;
 	if (width > length)
 	{
 		padding = width - length;
 		if (flags & F_MINUS)
 		{
-			write(1, str, length);
+			write(1, string, length);
 			while (padding > 0)
 			{
-				write(1, " ", 1);
+				write(1, "\t", 1);
 				padding--;
 				printed_characters++;
 			}
@@ -40,17 +45,17 @@ int print_string(const char *str, int width, int precision, int flags)
 		{
 			while (padding > 0)
 			{
-				write(1, " ", 1);
+				write(1, "\t", 1);
 				padding--;
 				printed_characters++;
 			}
-			write(1, str, length);
+			write(1, string, length);
 		}
-	printed_characters += length;
+		printed_characters += length;
 	}
 	else
 	{
-		write(1, str, length);
+		write(1, string, length);
 		printed_characters = length;
 	}
 	return (printed_characters);
