@@ -14,7 +14,8 @@
 
 int print_string(const char *str, int width, int precision, int flags)
 {
-	int padding, int length = 0, int printed_characters = 0;
+	int padding, int length = 0,
+	int printed_characters = 0;
 
 	if (str == NULL)
 		str = "(null)";
@@ -24,8 +25,7 @@ int print_string(const char *str, int width, int precision, int flags)
 	length = precision;
 	if (width > length)
 	{
-		int padding = width - length;
-
+		padding = width - length;
 		if (flags & F_MINUS)
 		{
 			write(1, str, length);
